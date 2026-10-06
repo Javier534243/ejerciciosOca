@@ -1,0 +1,6 @@
+.alerta {
+    text-transform: uppercase;
+    color: #f22;
+    background-color: #222;
+    border: 2px solid #f22a;
+}
