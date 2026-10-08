@@ -4,6 +4,8 @@ function dqs(sel) {
 
 const tirarDado = dqs("#botonDado")
 
+const tablero = dqs("#tablero")
+
 const informacionTurno = dqs("#informacionTurno")
 
 const jugadorA = {
@@ -18,17 +20,62 @@ const jugadorB = {
     activado: false,
 }
 
-tirarDado.addEventListener("click", (e) => {
-    e.preventDefault()
-    moverJugador() 
-})
+function tirar() {
+    tirarDado.addEventListener("click", (e) => {
+        e.preventDefault()
+        moverJugador()
+    })
+}
 
-function actualizarInformacion() {
+
+const arrayTablero = []
+
+function rellenarTablero(cantidad) {
+    for (let i = 0;i <= cantidad;i++) {
+        arrayTablero.push(i)
+    }
+}
+
+function comprobarVictoria() {
+    if (jugadorA.posicion > 20) {
+        alert("Ha ganado el jugador A")
+        tirarDado.classList.add('hidden')
+    } else if (jugadorB.posicion > 20) {
+        alert("Ha ganado el jugado B")
+        tirarDado.classList.add('hidden')
+    }
+}
+
+rellenarTablero(20)
+
+function imprimirTablero() {
+    let htmlContendio = ""
+    for(let i = 0;i < arrayTablero.length;i++) {
+        if(jugadorA.posicion === i && jugadorB.posicion === i) {
+            htmlContendio += `<div class="celda ficha-jugadorA_B"></div>`
+        }else if(jugadorA.posicion === i) {
+            htmlContendio += `<div class="celda ficha-jugadorA"></div>`
+        } else if(jugadorB.posicion === i) {
+            htmlContendio += `<div class="celda ficha-jugadorB"></div>`
+        } else {
+            htmlContendio += `<div class="celda">${i}</div>`
+        }
+
+    }
+    tablero.innerHTML = htmlContendio
+}
+
+function actualizarInformacion(num) {
     let htmlContendio = ""
     if (jugadorA.activado === true) {
-        htmlContendio = `Es el turno del jugador: ${jugadorA.nombre}`
+        const { nombre } = jugadorA
+        htmlContendio += `
+        <div>Es el turno del jugador: ${nombre}</div>
+        ${num !== undefined ? `<div id="contadorEscondido">El ${nombre} ha sacado ${num}` : "El jugador A es el primero en lanzar el dado" }`
     } else {
-        htmlContendio = `Es el turno del jugador: ${jugadorB.nombre}`
+        const {nombre}  = jugadorB
+        htmlContendio += `Es el turno del jugador: ${nombre}
+        <div>El ${nombre} ha sacado ${num}`
     }
     informacionTurno.innerHTML = htmlContendio
 }
@@ -45,7 +92,13 @@ function moverJugador() {
         jugadorA.activado = true
         jugadorB.activado = false
     }
-    actualizarInformacion()
+    actualizarInformacion(dado)
+    imprimirTablero()
+    comprobarVictoria()
 }
+
+imprimirTablero()
+
+tirar()
 
 actualizarInformacion()
