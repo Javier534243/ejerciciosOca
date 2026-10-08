@@ -2,6 +2,8 @@ function dqs(sel) {
     return document.querySelector(sel)
 }
 
+const tabla = dqs("#tabla")
+
 const casillas = []
 
 function rellenarArray(cantidad) {
@@ -16,7 +18,10 @@ console.log(casillas)
 
 function imprimirCuadricula() {
     let htmlContenido = ""
-    for (const casilla of casillas) {
+    for (let i = 0;i < casillas.length;i++) {
         htmlContenido += `<div class="casilla"></div>`
     }
+    tabla.innerHTML = htmlContenido
 }
+
+imprimirCuadricula()
