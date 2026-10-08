@@ -1,0 +1,19 @@
+#tabla {
+    background-color: #333;
+    padding: 20px;
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(7, 1fr);
+    width: fit-content;
+}
+
+.casilla {
+    width: 30px;
+    padding: 10px;
+    border: 2px solid #aaaa;
+    color: #fff;
+}
+
+.ficha {
+    background-color: #f00;
+}
