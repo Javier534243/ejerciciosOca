@@ -1,0 +1,36 @@
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px;
+    background-color: #333;
+    width: fit-content;
+    gap: 2px;
+}
+
+.celda {
+    width: 30px;
+    border: 2px solid #aaaa;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#botonDado {
+    margin-top: 20px;
+}
+
+.ficha-jugadorA {
+    background-color: #f00;
+}
+
+.ficha-jugadorB {
+    background-color: #00f;
+}
+
+.ficha-jugadorA_B {
+    background: linear-gradient(#f00, #00f);
+}
