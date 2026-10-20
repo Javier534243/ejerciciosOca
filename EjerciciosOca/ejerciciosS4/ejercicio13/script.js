@@ -24,7 +24,7 @@ function crearArrayjugadores() {
 function anyadirJugadores() {
     let htmlcontenido = ""
     for(const juga of jugadores) {
-        htmlcontenido += `<div>Jugador ${juga.jugador}: ${juga.nombre}</div>`
+        htmlcontenido += `<div>Jugador ${juga.jugador}: ${juga.nombre.toUpperCase()}</div>`
     }
     jugadoresCreados.innerHTML = htmlcontenido
 }
