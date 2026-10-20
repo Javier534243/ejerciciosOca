@@ -5,5 +5,7 @@ const casillaActual = 0
 function funcionCasillas() {
     const cE = casillasEspeciales
     const cA = casillaActual
-    if (cE[0] === cA)
+    if (cE[0] === cA) {
+        
+    }
 }
