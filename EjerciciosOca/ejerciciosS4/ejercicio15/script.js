@@ -19,6 +19,6 @@ function funcionCasillas() {
         } else {
             turnoJugador = 0
         }
-        console.log("Turno perdido")
+        console.log("Turno perdido.")
     }
 }
